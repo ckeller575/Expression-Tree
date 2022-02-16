@@ -4,6 +4,8 @@
 
 using namespace std;
 
+//class for binary tree
+
 class treeNode{
     public: 
         char info;
@@ -28,9 +30,13 @@ int toInt(char a);
 
 int main(){
     string input = "(3 + ((5 + 9) * 2))";
-    input.erase(std::remove (input.begin(), input.end(), ' '), input.end()); //removes whitespace
-    stack<char> arith_exp;
-    //parsing loop - could be its own function, but I didn't wanna break the code after getting it to work
+    cout<<"Mathematical expression used for this example (works with user input as well): "<<endl;
+    cout<<input<<endl;
+    input.erase(std::remove (input.begin(), input.end(), ' '), input.end()); //removes whitespace from string
+    
+    stack<char> arith_exp; //INPUT IS TURNED FROM A STRING INTO A STACK OF CHARS BY PARSING LOOP
+
+    //parsing loop
     for(int i = 0; input[i] != 0; i++){
         string temp = "";
         if(input[i]=='('){
@@ -122,7 +128,7 @@ int isNumber(char a){
     }
 }
 
-void printStack(stack<char> a){
+void printStack(stack<char> a){ //Simple function to print the stack
     cout<<"STACK: "<<endl;
     stack<char> temp = a;
     while(!temp.empty()){
@@ -131,7 +137,7 @@ void printStack(stack<char> a){
     }
 }
 
-treeNode* buildTree(stack<char> a){
+treeNode* buildTree(stack<char> a){ //Function that takes stack, and turns into binary tree, fairly complicated logic used to follow expression tree rules.
     treeNode *root;
     treeNode *tempNode;
     treeNode *tempNode1;
@@ -195,7 +201,7 @@ void printTree(treeNode* root, int s){
     printTree(root->left, s);
 }
 
-int calculateSum(treeNode* root){
+int calculateSum(treeNode* root){ //function traverses through binary expression tree to calculate sum
    if(!root){
        return 0;
    }
@@ -213,7 +219,7 @@ int calculateSum(treeNode* root){
    return left/right;
 }
 
-int toInt(char a){
+int toInt(char a){ //function converts char to int
     switch(a){
         case '0':
             return 0;
