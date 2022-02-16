@@ -9,4 +9,4 @@ The buildTree function then turns those characters into a tree implementing the 
 The printTree function prints the tree horizontally.
 Finally, the calculateSum function traverses the tree and returns the sum of the tree to the main.
 
-he OUTPUT file shows an example of compiling the code.
+The OUTPUT file shows an example of compiling the code.
